@@ -7,6 +7,8 @@ WHERE {
   VALUES ?impact {
     <http://mu.semte.ch/vocabularies/ext/impact/positive>
     <http://mu.semte.ch/vocabularies/ext/impact/negative>
+    <http://mu.semte.ch/vocabularies/ext/impact/neutral>
+    <http://mu.semte.ch/vocabularies/ext/impact/unknown>
   }
   ?annotation a oa:Annotation ;
               oa:motivatedBy oa:classifying ;
