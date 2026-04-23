@@ -8,7 +8,6 @@ WHERE {
     <http://mu.semte.ch/vocabularies/ext/impact/positive>
     <http://mu.semte.ch/vocabularies/ext/impact/negative>
   }
-
   ?annotation a oa:Annotation ;
               oa:motivatedBy oa:classifying ;
               oa:hasTarget ?decision ;
