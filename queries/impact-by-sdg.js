@@ -3,7 +3,8 @@ export const impactBySdgQuery = `
   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
   PREFIX ont: <http://data.europa.eu/eli/ontology#>
-  SELECT ?sdg ?impact (COUNT(DISTINCT ?annotation) AS ?count)
+
+  SELECT ?sdg ?impact (COUNT(DISTINCT ?decision) AS ?count)
   WHERE {
 
     VALUES ?conceptScheme {
