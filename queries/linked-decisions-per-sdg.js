@@ -1,9 +1,9 @@
 export const totalDecisionsPerSdgQuery = `
-PREFIX oa: <http://www.w3.org/ns/oa#>
+  PREFIX oa: <http://www.w3.org/ns/oa#>
   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
   PREFIX ont: <http://data.europa.eu/eli/ontology#>
-  SELECT  (COUNT(DISTINCT ?decision) AS ?linkedCount)
+  SELECT (COUNT(?decision) AS ?linkedCount)
   WHERE {
 
     VALUES ?conceptScheme {
@@ -28,5 +28,4 @@ PREFIX oa: <http://www.w3.org/ns/oa#>
 
     ?sdg skos:inScheme ?conceptScheme.
   }
-
 `;
