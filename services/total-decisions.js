@@ -1,4 +1,4 @@
-import { query } from 'mu';
+import { querySudo as query } from '@lblod/mu-auth-sudo';
 import { totalDecisionsQuery } from '../queries/total-decisions';
 
 export async function getTotalDecisions(governingBody) {
