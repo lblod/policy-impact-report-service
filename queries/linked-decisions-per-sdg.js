@@ -1,9 +1,9 @@
-export const totalDecisionsPerSdgQuery = `
+export const totalDecisionsPerSdgQuery = (governingBody) => `
   PREFIX oa: <http://www.w3.org/ns/oa#>
   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
   PREFIX ont: <http://data.europa.eu/eli/ontology#>
-  SELECT (COUNT(?decision) AS ?linkedCount)
+  SELECT (COUNT(DISTINCT ?decision) AS ?linkedCount)
   WHERE {
 
     VALUES ?conceptScheme {
@@ -14,6 +14,8 @@ export const totalDecisionsPerSdgQuery = `
     oa:motivatedBy oa:classifying ;
     oa:hasTarget ?decision ;
     oa:hasBody ?sdg .
+
+    ?decision ext:owningBody <${governingBody}> .
 
     {
       ?annotation oa:hasBody ?impact .

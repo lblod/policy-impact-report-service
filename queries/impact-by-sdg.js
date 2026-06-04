@@ -1,4 +1,4 @@
-export const impactBySdgQuery = `
+export const impactBySdgQuery = (governingBody) => `
   PREFIX oa: <http://www.w3.org/ns/oa#>
   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -15,6 +15,8 @@ export const impactBySdgQuery = `
     oa:motivatedBy oa:classifying ;
     oa:hasTarget ?decision ;
     oa:hasBody ?sdg .
+
+    ?decision ext:owningBody <${governingBody}> .
 
     {
       ?annotation oa:hasBody ?impact .
