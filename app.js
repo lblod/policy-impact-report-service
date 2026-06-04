@@ -3,24 +3,42 @@ import { getImpactBySdg } from './services/impact-by-sdg';
 import { getTotalDecisions } from './services/total-decisions';
 import { getLinkedDecisionsPerSdg } from './services/linked-decisions-per-sdg';
 
+const GOVERNING_BODY_REQUIRED_MESSAGE =
+  'A governing body is required. Please provide a `governingBody` query parameter.';
+
 app.get('/health', async (_req, res) => {
   res.send({ status: 'ok' });
 });
 
 app.get('/impact-by-sdg', async (req, res) => {
-  const data = await getImpactBySdg();
+  const { governingBody } = req.query;
+  if (!governingBody) {
+    return res.status(400).json({ error: GOVERNING_BODY_REQUIRED_MESSAGE });
+  }
+
+  const data = await getImpactBySdg(governingBody);
   res.json(data);
 });
 
 app.get('/total-decisions', async (req, res) => {
-  const count = await getTotalDecisions();
+  const { governingBody } = req.query;
+  if (!governingBody) {
+    return res.status(400).json({ error: GOVERNING_BODY_REQUIRED_MESSAGE });
+  }
+
+  const count = await getTotalDecisions(governingBody);
   res.json({
     count: Number.parseInt(count, 10),
   });
 });
 
 app.get('/linked-decisions-per-sdg', async (req, res) => {
-  const count = await getLinkedDecisionsPerSdg();
+  const { governingBody } = req.query;
+  if (!governingBody) {
+    return res.status(400).json({ error: GOVERNING_BODY_REQUIRED_MESSAGE });
+  }
+
+  const count = await getLinkedDecisionsPerSdg(governingBody);
   res.json({
     count: Number.parseInt(count, 10),
   });

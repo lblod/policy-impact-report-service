@@ -1,8 +1,8 @@
 import { query } from 'mu';
 import { impactBySdgQuery } from '../queries/impact-by-sdg.js';
 
-export async function getImpactBySdg() {
-  const result = await query(impactBySdgQuery);
+export async function getImpactBySdg(governingBody) {
+  const result = await query(impactBySdgQuery(governingBody));
 
   return result.results.bindings.map((b) => ({
     sdg: b.sdg.value,
