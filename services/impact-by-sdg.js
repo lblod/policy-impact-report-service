@@ -1,4 +1,4 @@
-import { query } from 'mu';
+import { querySudo as query } from '../helpers/sudo-query.js';
 import { impactBySdgQuery } from '../queries/impact-by-sdg.js';
 
 export async function getImpactBySdg(governingBody) {
