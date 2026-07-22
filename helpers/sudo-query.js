@@ -1,3 +1,5 @@
+import process from 'node:process';
+
 const SPARQL_ENDPOINT =
   process.env.MU_SPARQL_ENDPOINT || 'http://database:8890/sparql';
 
