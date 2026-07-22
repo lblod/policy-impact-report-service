@@ -1,10 +1,14 @@
-export const totalDecisionsPerSdgQuery = (governingBody) => `
+import { sdgValuesClause } from '../helpers/sdg-filter.js';
+
+export const totalDecisionsPerSdgQuery = (governingBody, sdgUris = []) => `
   PREFIX oa: <http://www.w3.org/ns/oa#>
   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
   PREFIX ont: <http://data.europa.eu/eli/ontology#>
   SELECT (COUNT(DISTINCT ?decision) AS ?linkedCount)
   WHERE {
+
+    ${sdgValuesClause(sdgUris)}
 
     VALUES ?conceptScheme {
       <http://data.lblod.gift/id/conceptscheme/sdg-simple>
