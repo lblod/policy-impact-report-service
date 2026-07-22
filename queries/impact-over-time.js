@@ -31,15 +31,17 @@ export const impactOverTimeQuery = (governingBody, sdgUris = []) => `
 
     ?sdg skos:inScheme <http://data.lblod.gift/id/conceptscheme/sdg-simple> .
 
-    {
-      ?work eli:is_realized_by ?decision .
-      ?work eli:date_document ?date .
-    } UNION {
-      ?decision eli:date_document ?date .
-    } UNION {
-      ?decision ^oa:hasTarget / oa:hasBody ?datebody .
-      ?datebody rdf:predicate eli:date_document .
-      ?datebody rdf:object ?date .
+    OPTIONAL {
+      {
+        ?work eli:is_realized_by ?decision .
+        ?work eli:date_document ?date .
+      } UNION {
+        ?decision eli:date_document ?date .
+      } UNION {
+        ?decision ^oa:hasTarget / oa:hasBody ?datebody .
+        ?datebody rdf:predicate eli:date_document .
+        ?datebody rdf:object ?date .
+      }
     }
 
     BIND(SUBSTR(STR(?date), 0, 4) AS ?year)
