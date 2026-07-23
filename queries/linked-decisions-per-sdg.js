@@ -1,3 +1,4 @@
+import { sparqlEscapeUri } from 'mu';
 import { sdgValuesClause } from '../helpers/sdg-filter.js';
 
 export const totalDecisionsPerSdgQuery = (governingBody, sdgUris = []) => `
@@ -19,7 +20,7 @@ export const totalDecisionsPerSdgQuery = (governingBody, sdgUris = []) => `
     oa:hasTarget ?decision ;
     oa:hasBody ?sdg .
 
-    ?decision ext:owningBody <${governingBody}> .
+    ?decision ext:owningBody ${sparqlEscapeUri(governingBody)} .
 
     {
       ?annotation oa:hasBody ?impact .
