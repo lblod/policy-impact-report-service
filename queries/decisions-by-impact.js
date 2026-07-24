@@ -1,3 +1,4 @@
+import { sparqlEscapeUri } from 'mu';
 import { sdgValuesClause } from '../helpers/sdg-filter.js';
 
 export const decisionsByImpactQuery = (governingBody, sdgUris = []) => `
@@ -14,7 +15,7 @@ export const decisionsByImpactQuery = (governingBody, sdgUris = []) => `
     oa:hasTarget ?decision ;
     oa:hasBody ?sdg .
 
-    ?decision ext:owningBody <${governingBody}> .
+    ?decision ext:owningBody ${sparqlEscapeUri(governingBody)} .
 
     ?annotation oa:hasBody ?impact .
     ?impact skos:inScheme <http://mu.semte.ch/vocabularies/ext/impact> .

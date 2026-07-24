@@ -1,7 +1,7 @@
 {
-  "name": "mu-javascript-template",
-  "version": "1.9.1",
-  "description": "Template for mu services written in JavaScript",
+  "name": "Policy Impact Report Service",
+  "version": "0.0.4",
+  "description": "Service for generating policy impact reports",
   "type": "module",
   "repository": {
     "type": "git",

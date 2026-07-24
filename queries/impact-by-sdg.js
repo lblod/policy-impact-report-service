@@ -1,3 +1,5 @@
+import { sparqlEscapeUri } from 'mu';
+
 export const impactBySdgQuery = (governingBody) => `
   PREFIX oa: <http://www.w3.org/ns/oa#>
   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -16,7 +18,7 @@ export const impactBySdgQuery = (governingBody) => `
     oa:hasTarget ?decision ;
     oa:hasBody ?sdg .
 
-    ?decision ext:owningBody <${governingBody}> .
+    ?decision ext:owningBody ${sparqlEscapeUri(governingBody)} .
 
     {
       ?annotation oa:hasBody ?impact .

@@ -3,6 +3,7 @@ import { getImpactBySdg } from './services/impact-by-sdg';
 import { getTotalDecisions } from './services/total-decisions';
 import { getLinkedDecisionsPerSdg } from './services/linked-decisions-per-sdg';
 import { getDecisionsByImpact } from './services/decisions-by-impact';
+import { getImpactOverTime } from './services/impact-over-time';
 
 function sdgUrisFrom(query) {
   const { sdg } = query;
@@ -65,4 +66,14 @@ app.get('/decisions-by-impact', async (req, res) => {
     sdgUrisFrom(req.query),
   );
   res.json(counts);
+});
+
+app.get('/impact-over-time', async (req, res) => {
+  const { governingBody } = req.query;
+  if (!governingBody) {
+    return res.status(400).json({ error: GOVERNING_BODY_REQUIRED_MESSAGE });
+  }
+
+  const data = await getImpactOverTime(governingBody, sdgUrisFrom(req.query));
+  res.json(data);
 });
