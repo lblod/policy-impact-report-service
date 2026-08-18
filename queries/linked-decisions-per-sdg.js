@@ -11,7 +11,7 @@ export const totalDecisionsPerSdgQuery = (governingBody, sdgUris = []) => `
     ${sdgValuesClause(sdgUris)}
 
     VALUES ?conceptScheme {
-      <http://data.lblod.gift/id/conceptscheme/sdg-simple>
+      <http://lblod.data.gift/id/conceptscheme/sdg-simple>
     }
 
     ?annotation a oa:Annotation ;
