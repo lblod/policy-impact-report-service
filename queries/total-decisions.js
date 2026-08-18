@@ -13,6 +13,6 @@ WHERE {
     ?expression a eli:Expression .
     ?expression ext:owningBody <${governingBody}> .
     ?task dct:isPartOf ?job.
-    ?job <http://mu.semte.ch/vocabularies/ext/codelist>  <http://data.lblod.gift/id/conceptscheme/sdg-simple>.
+    ?job <http://mu.semte.ch/vocabularies/ext/codelist>  <http://lblod.data.gift/id/conceptscheme/sdg-simple>.
   }
 `;

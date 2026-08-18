@@ -19,7 +19,7 @@ export const decisionsByImpactQuery = (governingBody, sdgUris = []) => `
     ?annotation oa:hasBody ?impact .
     ?impact skos:inScheme <http://mu.semte.ch/vocabularies/ext/impact> .
 
-    ?sdg skos:inScheme <http://data.lblod.gift/id/conceptscheme/sdg-simple> .
+    ?sdg skos:inScheme <http://lblod.data.gift/id/conceptscheme/sdg-simple> .
   }
   GROUP BY ?impact
 `;

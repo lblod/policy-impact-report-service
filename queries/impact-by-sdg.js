@@ -8,7 +8,7 @@ export const impactBySdgQuery = (governingBody) => `
   WHERE {
 
     VALUES ?conceptScheme {
-      <http://data.lblod.gift/id/conceptscheme/sdg-simple>
+      <http://lblod.data.gift/id/conceptscheme/sdg-simple>
     }
 
     ?annotation a oa:Annotation ;
